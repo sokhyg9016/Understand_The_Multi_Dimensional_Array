@@ -75,6 +75,15 @@ zippo[0][0] + 1 : 1
 <img src = "http://cslab2.kku.ac.kr/~201721210/pointer_study.JPG">
 
 
+<p>
+In C, when the array notation is used for a function parameter, it is automatically transformed into a pointer declaration, so declaring parameter as int* array and int array[] are equivalent. I tend to use second one because it is more clear that function expects an array as an argument.
+</p>
+<p><b>
+      C에서 배열 표기법이 함수 매개변수에 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int 어레이[]로 선언하는 것은 동등하다.       <br>함수가 인수로 배열을 기대하는 것이 더 명확하기 때문에 나는 두번째 것을 사용하는 경향이 있다.
+</b></p>
+<hr>
+<a href = "https://softwareengineering.stackexchange.com/questions/269648/int-vs-int-n-vs-int-n-in-functions-parameters-which-one-do-you-think-i">참조: int * vs int [N] vs int (*)[N] in functions parameters. Which one do you think is better?</a>
+
 
 
 
