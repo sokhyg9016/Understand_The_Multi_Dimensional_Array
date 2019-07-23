@@ -82,8 +82,9 @@ In C, when the array notation is used for a function parameter, it is automatica
       C에서 배열 표기법이 함수 매개변수에 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int 어레이[]로 선언하는 것은 동등하다.       <br>함수가 인수로 배열을 기대하는 것이 더 명확하기 때문에 나는 두번째 것을 사용하는 경향이 있다.
 </b></p>
 <hr>
-<a href = "https://softwareengineering.stackexchange.com/questions/269648/int-vs-int-n-vs-int-n-in-functions-parameters-which-one-do-you-think-i">참조: int * vs int [N] vs int (*)[N] in functions parameters. Which one do you think is better?</a>
-
+<h4>참조</h4>
+<a href = "https://softwareengineering.stackexchange.com/questions/269648/int-vs-int-n-vs-int-n-in-functions-parameters-which-one-do-you-think-i">int * vs int [N] vs int (*)[N] in functions parameters. Which one do you think is better?</a><br>
+<a href = "https://stackoverflow.com/questions/27878583/does-int-decay-into-int-in-a-function-parameter#comment44159110_27878630">Does “int (*)[]” decay into “int **” in a function parameter?</a>
 
 
 
