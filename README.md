@@ -42,6 +42,30 @@ Note that zippo, &zippo, *zippo, zippo[0], &zippo[0], and &zippo[0][0] all have 
 0x0019FEF0  00 00 00 00  ....
 0x0019FEF4  00 00 00 00  ....
 0x0019FEF8  00 00 00 00  ....
+<hr>
+zippo         : 0019FEDC
+zippo + 1     : 0019FEE4
+
+&zippo        : 0019FEDC
+&zippo + 1    : 0019FEFC
+
+*zippo        : 0019FEDC
+*zippo + 1    : 0019FEE0
+
+zippo[0]      : 0019FEDC
+zippo[0] + 1  : 0019FEE0
+
+&zippo[0]     : 0019FEDC
+&zippo[0] + 1 : 0019FEE4
+
+*zippo[0]     : 0
+*zippo[0] + 1 : 1
+
+zippo[0][0]      : 0
+zippo[0][0] + 1 : 1
+
+&zippo[0][0]     : 0019FEDC
+&zippo[0][0] + 1: 0019FEE0
 </pre>
 <br>
 
