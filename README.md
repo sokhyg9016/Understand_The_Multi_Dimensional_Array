@@ -43,29 +43,32 @@ Note that zippo, &zippo, *zippo, zippo[0], &zippo[0], and &zippo[0][0] all have 
 0x0019FEF4  00 00 00 00  ....
 0x0019FEF8  00 00 00 00  ....
 <hr>
+<div style = "font-size: 0.8em; padding:0 margin:0;">
 zippo         : 0019FEDC
 zippo + 1     : 0019FEE4
-
+<br>
 &zippo        : 0019FEDC
 &zippo + 1    : 0019FEFC
-
+<br>
 *zippo        : 0019FEDC
 *zippo + 1    : 0019FEE0
-
+<br>
 zippo[0]      : 0019FEDC
 zippo[0] + 1  : 0019FEE0
-
+<br>
 &zippo[0]     : 0019FEDC
 &zippo[0] + 1 : 0019FEE4
-
+<br>
 *zippo[0]     : 0
 *zippo[0] + 1 : 1
-
-zippo[0][0]      : 0
+<br>
+zippo[0][0]     : 0
 zippo[0][0] + 1 : 1
-
+<br>
 &zippo[0][0]     : 0019FEDC
 &zippo[0][0] + 1: 0019FEE0
+</div>
+
 </pre>
 <br>
 
