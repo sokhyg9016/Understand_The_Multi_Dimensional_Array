@@ -76,10 +76,10 @@ zippo[0][0] + 1 : 1
 
 
 <p>
-In C, when the array notation is used for a function parameter, it is automatically transformed into a pointer declaration, so declaring parameter as int* array and int array[] are equivalent. I tend to use second one because it is more clear that function expects an array as an argument.
+In C, when the array notation is used for a function parameter, it is automatically transformed into a pointer declaration, so declaring parameter as int* array and int array[] are equivalent.
 </p>
 <p><b>
-      C에서 배열 표기법이 함수 매개변수에 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int 어레이[]로 선언하는 것은 동등하다.       <br>함수가 인수로 배열을 기대하는 것이 더 명확하기 때문에 나는 두번째 것을 사용하는 경향이 있다.
+      C에서 배열 표기법이 함수 매개변수에 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int[]로 선언하는 것은 동등하다.      
 </b></p>
 <hr>
 <h4>참조</h4>
@@ -88,7 +88,7 @@ In C, when the array notation is used for a function parameter, it is automatica
 
 <h3>정리</h3>
 <ol>
-      <li><b>C에서 int[]은 함수 매개변수에서 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int 어레이[]로 선언하는 것은 동등하다.</b></li>
+      <li><b>C에서 int[]은 함수 매개변수에서 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int[]로 선언하는 것은 동등하다.</b></li>
       <li>int (*a)[] 는 int **a로 변환될 수 없다. int(*)[]는 int형 배열의 주소값을 저장하는 포인터이고, int**a는 단순히 int* 타입의 주소를 저 장하기 때문이다. </li>
       <li>즉 int (*a)[]는 int arr[5]; 에서 arr의 주소를, int** a는 int*p에서 p의 주소를 저장한다.</li>
       <li>이때 당연히 arr와 p의 데이터 타입은 다르다. <b>&arr는 int(*)[5], &p는 int**이다.</b></li>
