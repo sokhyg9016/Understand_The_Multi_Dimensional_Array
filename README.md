@@ -28,3 +28,26 @@ zippo[i][j]   int
 <p>
 Note that zippo, &zippo, *zippo, zippo[0], &zippo[0], and &zippo[0][0] all have the same value; they all point to the base of the array (the address of the array is the same as the address of the first element of the array). The types of the various expressions all differ, though.
 </p>
+
+<h3>Result</h3>
+<hr>
+
+<p>zippo[4][2] = {0,};</p>
+<pre>
+0x0019FEDC  00 00 00 00  ....
+0x0019FEE0  00 00 00 00  ....
+0x0019FEE4  00 00 00 00  ....
+0x0019FEE8  00 00 00 00  ....
+0x0019FEEC  00 00 00 00  ....
+0x0019FEF0  00 00 00 00  ....
+0x0019FEF4  00 00 00 00  ....
+0x0019FEF8  00 00 00 00  ....
+</pre>
+<br>
+
+<img src = "http://cslab2.kku.ac.kr/~201721210/pointer_study.JPG">
+
+
+
+
+
