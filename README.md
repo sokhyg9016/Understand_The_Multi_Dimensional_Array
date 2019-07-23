@@ -84,11 +84,15 @@ In C, when the array notation is used for a function parameter, it is automatica
       C에서 배열 표기법이 함수 매개변수에 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int[]로 선언하는 것은 동등하다.      
 </b></p>
 <hr>
-<h4>참조</h4>
+<br>
+<h3>참조</h3>
+<hr>
 <a href = "https://softwareengineering.stackexchange.com/questions/269648/int-vs-int-n-vs-int-n-in-functions-parameters-which-one-do-you-think-i">int * vs int [N] vs int (*)[N] in functions parameters. Which one do you think is better?</a><br>
 <a href = "https://stackoverflow.com/questions/27878583/does-int-decay-into-int-in-a-function-parameter#comment44159110_27878630">Does “int (*)[]” decay into “int **” in a function parameter?</a>
+<br>
 
 <h3>정리</h3>
+<hr>
 <ol>
       <li><b>C에서 int[]은 함수 매개변수에서 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int[]로 선언하는 것은 동등하다.</b></li>
       <li>int (*a)[] 는 int **a로 변환될 수 없다. int(*)[]는 int형 배열의 주소값을 저장하는 포인터이고, int**a는 단순히 int* 타입의 주소를 저 장하기 때문이다. </li>
