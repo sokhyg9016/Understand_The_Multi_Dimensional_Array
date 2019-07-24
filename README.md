@@ -135,7 +135,7 @@ In C, when the array notation is used for a function parameter, it is automatica
       
 gcc 4.x에서는 gcc -std=c99 -ansi -Wall로 컴파일하고, gcc 3.x에서는 gcc -std=c99 -Wall로 컴파일하면 됩니다. 식 안에서 array를 평가할 때는 포인터로 해석한다는 것에 주의해야 합니다.
 </p>
-<br>
+<hr>
 <br>
 <p>
 함수 안에서 배열을 선언할 때는 다음과 같습니다.
@@ -153,7 +153,7 @@ gcc 4.x에서는 gcc -std=c99 -ansi -Wall로 컴파일하고, gcc 3.x에서는 g
 이와 같은 표현을 접할 때가 있습니다. 두 줄 모두 잘못된 코드입니다. 메모리 할당도 안했고, 입력받을 수 있는 최대 문자열 길이도 지정하지 않았습니다. "%10s"와 같은 표현을 사용할 수도 있고, sscanf() 등을 사용할 수도 있습니다.
 </p>
 <p>
-문제의 char name[]을 살펴보겠습니다. 이것은 많은 분들이 배열로 생각하는데, 이것은 포인터입니다. 선언은 배열이지만, C에서는 이 동작에 대해 정의되어 있지 않습니다. 대부분의 컴파일러는 이것을 포인터로 처리하고 있습니다. char name[]과 같이 사용하는 것을 <b><u>incomplete array type</u></b>이라고 하며, 커널 소스에서도 너무 많이 사용되었습니다. 현재, gcc 3.3.6 이상의 버전과 gcc 4.x에서는 incomplete array type을 허용하지 않고 있습니다.
+      문제의 char name[]을 살펴보겠습니다. 이것은 많은 분들이 배열로 생각하는데, 이것은 <b>포인터</b>입니다. 선언은 배열이지만, C에서는 이 동작에 대해 정의되어 있지 않습니다. 대부분의 컴파일러는 이것을 포인터로 처리하고 있습니다. char name[]과 같이 사용하는 것을 <b><u>incomplete array type</u></b>이라고 하며, 커널 소스에서도 너무 많이 사용되었습니다. 현재, gcc 3.3.6 이상의 버전과 gcc 4.x에서는 incomplete array type을 허용하지 않고 있습니다.
 </p>
 <br>
  
