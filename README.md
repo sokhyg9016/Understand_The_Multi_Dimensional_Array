@@ -94,10 +94,12 @@ In C, when the array notation is used for a function parameter, it is automatica
 <hr>
 <h3>참조</h3>
 <hr>
-<a href = "https://softwareengineering.stackexchange.com/questions/269648/int-vs-int-n-vs-int-n-in-functions-parameters-which-one-do-you-think-i">int * vs int [N] vs int (*)[N] in functions parameters. Which one do you think is better?</a><br>
-<a href = "https://stackoverflow.com/questions/27878583/does-int-decay-into-int-in-a-function-parameter#comment44159110_27878630">Does “int (*)[]” decay into “int **” in a function parameter?</a><br>
-<a href = "https://stackoverflow.com/questions/1641957/is-an-array-name-a-pointer">Is an array name a pointer?</a><br>
-<a href = "http://www.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS9919998334">포인터와 배열의 애증 관계</a>
+<ul>
+<li><a href = "https://softwareengineering.stackexchange.com/questions/269648/int-vs-int-n-vs-int-n-in-functions-parameters-which-one-do-you-think-i">int * vs int [N] vs int (*)[N] in functions parameters. Which one do you think is better?</a></li>
+<li><a href = "https://stackoverflow.com/questions/27878583/does-int-decay-into-int-in-a-function-parameter#comment44159110_27878630">Does “int (*)[]” decay into “int **” in a function parameter?</a></li>
+<li><a href = "https://stackoverflow.com/questions/1641957/is-an-array-name-a-pointer">Is an array name a pointer?</a></li>
+<li><a href = "http://www.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS9919998334">포인터와 배열의 애증 관계</a></li>
+</ul>
 <hr>
 <h3>정리</h3>
 <hr>
@@ -165,6 +167,9 @@ gcc 4.x에서는 gcc -std=c99 -ansi -Wall로 컴파일하고, gcc 3.x에서는 g
 <hr>
 <ol>
       <li><b>C에서 int[]은 함수 매개변수에서 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int[]로 선언하는 것은 동등하다.</b></li>
+      <li>배열명은 배열 생성부터 상수값으로 고정된다.</li>
+      <li>배열명이 배열의 시작주소값을 상수 값으로 갖고 변경할 수 없다. 단, 그 배열의 주소에 들어있는 값을 변경하는 것은 가능하다.</li>
+      <li><b>배열 이름은 포인터와 비슷하지만 상수적 특성을 지닌다. 또한 대부분의 컴파일러에서 배열을 포인터로 자동 변환해주는 일종의 규칙을 가지고 있다.</b></li>
       <li>int (*a)[] 는 int **a로 변환될 수 없다. int(*)[]는 int형 배열의 주소값을 저장하는 포인터이고, int**a는 단순히 int* 타입의 주소를 저 장하기 때문이다. </li>
       <li>즉 int (*a)[]는 int arr[5]; 에서 arr의 주소를, int** a는 int*p에서 p의 주소를 저장한다.</li>
       <li>이때 당연히 arr와 p의 데이터 타입은 다르다. <b>&arr는 int(*)[5], &p는 int**이다.</b></li>
