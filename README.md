@@ -96,7 +96,7 @@ In C, when the array notation is used for a function parameter, it is automatica
 <hr>
 <a href = "https://softwareengineering.stackexchange.com/questions/269648/int-vs-int-n-vs-int-n-in-functions-parameters-which-one-do-you-think-i">int * vs int [N] vs int (*)[N] in functions parameters. Which one do you think is better?</a><br>
 <a href = "https://stackoverflow.com/questions/27878583/does-int-decay-into-int-in-a-function-parameter#comment44159110_27878630">Does “int (*)[]” decay into “int **” in a function parameter?</a><br>
-<a href = "https://stackoverflow.com/questions/1641957/is-an-array-name-a-pointer">Is an array name a pointer?</a>
+<a href = "https://stackoverflow.com/questions/1641957/is-an-array-name-a-pointer">Is an array name a pointer?</a><br>
 <a href = "http://www.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS9919998334">포인터와 배열의 애증 관계</a>
 <hr>
 <h3>정리</h3>
@@ -124,7 +124,7 @@ In C, when the array notation is used for a function parameter, it is automatica
 </p>
 <p>
     C 언어에서 사용되는 식 안에서는 배열을 나타내는 array는 []이 있든, 없든 포인터로만 해석됩니다. array[2]에서 array는 포인터로 읽히며, 결국, *(array + 2)로 해석됩니다. []만 붙으면 배열이다라고 얘기하는 것은 설명하는 입장에서는 쉽지만 정확한 것은 아닙니다.
-<br>
+<br><br>
 따라서, 다음은 모두 같은 표현입니다.
 <br>
       
@@ -132,8 +132,33 @@ In C, when the array notation is used for a function parameter, it is automatica
       *(array + 2 );
       p[2];
       *(p + 2 );
+      
 gcc 4.x에서는 gcc -std=c99 -ansi -Wall로 컴파일하고, gcc 3.x에서는 gcc -std=c99 -Wall로 컴파일하면 됩니다. 식 안에서 array를 평가할 때는 포인터로 해석한다는 것에 주의해야 합니다.
 </p>
+<br>
+<br>
+<p>
+함수 안에서 배열을 선언할 때는 다음과 같습니다.
+
+      char name[] = "Hello, World";
+</p>
+
+초기화를 함께 하는 선언의 경우에는 맞는 표현입니다. 컴파일시에 할당되는 크기를 알 수 있습니다. 이런 종류를 <b><u>complete array type</u></b>이라 합니다.
+<br>
+
+      char name[];
+      scanf( "%s", name );
+
+<br>
+이와 같은 표현을 접할 때가 있습니다. 두 줄 모두 잘못된 코드입니다. 메모리 할당도 안했고, 입력받을 수 있는 최대 문자열 길이도 지정하지 않았습니다. "%10s"와 같은 표현을 사용할 수도 있고, sscanf() 등을 사용할 수도 있습니다.
+</p>
+<p>
+문제의 char name[]을 살펴보겠습니다. 이것은 많은 분들이 배열로 생각하는데, 이것은 포인터입니다. 선언은 배열이지만, C에서는 이 동작에 대해 정의되어 있지 않습니다. 대부분의 컴파일러는 이것을 포인터로 처리하고 있습니다. char name[]과 같이 사용하는 것을 <b><u>incomplete array type</u></b>이라고 하며, 커널 소스에서도 너무 많이 사용되었습니다. 현재, gcc 3.3.6 이상의 버전과 gcc 4.x에서는 incomplete array type을 허용하지 않고 있습니다.
+</p>
+<br>
+ 
+      error: array type has incomplete element type
+
 <hr>
 <p>출처: <a href = "http://www.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS9919998334">http://www.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS9919998334</a>
 </p>
