@@ -87,7 +87,8 @@ In C, when the array notation is used for a function parameter, it is automatica
 <h3>참조</h3>
 <hr>
 <a href = "https://softwareengineering.stackexchange.com/questions/269648/int-vs-int-n-vs-int-n-in-functions-parameters-which-one-do-you-think-i">int * vs int [N] vs int (*)[N] in functions parameters. Which one do you think is better?</a><br>
-<a href = "https://stackoverflow.com/questions/27878583/does-int-decay-into-int-in-a-function-parameter#comment44159110_27878630">Does “int (*)[]” decay into “int **” in a function parameter?</a>
+<a href = "https://stackoverflow.com/questions/27878583/does-int-decay-into-int-in-a-function-parameter#comment44159110_27878630">Does “int (*)[]” decay into “int **” in a function parameter?</a><br>
+<a href = "https://stackoverflow.com/questions/1641957/is-an-array-name-a-pointer">Is an array name a pointer?</a>
 <hr>
 <h3>정리</h3>
 <hr>
