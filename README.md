@@ -80,9 +80,17 @@ zippo[0][0] + 1 : 1
 In C, when the array notation is used for a function parameter, it is automatically transformed into a pointer declaration, so declaring parameter as int* array and int array[] are equivalent.
 </pre>
 </p>
-<p><b>
-      C에서 배열 표기법이 함수 매개변수에 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int[]로 선언하는 것은 동등하다.      
-</b></p>
+<p>
+      <b>C에서 배열 표기법이 함수 매개변수에 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int[]로 선언하는 것은 동등하다.</b>
+</p>
+<br>
+<p>
+"..So, in summary, array names in a C program are (in most cases) converted to pointers. One exception is when we use the sizeof operator on an array. If a was converted to a pointer in this context, sizeof a would give the size of a pointer and not of the actual array, which would be rather useless, so in that case a means the array itself."
+</p>
+</p>
+<p>
+      <b>따라서 요약하면, C 프로그램의 배열 이름은 (대부분의 경우) 포인터로 변환된다. 한 가지 예외는 어레이에서 연산자 크기를 사용하는 것이다. 이 맥락에서 a가 포인터로 변환된 경우 a의 크기는 실제 배열이 아닌 포인터 크기를 제공하므로 오히려 쓸모가 없으므로 a는 배열 자체를 의미한다.</b>
+</p>
 <hr>
 <h3>참조</h3>
 <hr>
