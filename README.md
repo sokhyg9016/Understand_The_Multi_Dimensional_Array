@@ -192,7 +192,7 @@ gcc 4.x에서는 gcc -std=c99 -ansi -Wall로 컴파일하고, gcc 3.x에서는 g
       <li><b>'주소 + 정수'</b>연산에서 정수는 해당 주소의 타입에 영향을 받아 상대적인 메모리상의 거리를 의미한다.</li>
       <li>int형 포인터를 대상으로 n 증가 -> n * sizeof(int)의 크기 만큼 증가</li>
       <li>double 형 포인터를 대상으로 n 증가 -> n * sizeof(double)의 크기 만큼 증가</li>
-      <li><b>TYPE형 포인터를 대상으로 n의 크기만큼 값을 증가 및 감소 시, n * sizeof(TYPE)의 크기마늠 주소 값이 증가 및 감소한다.<b></li>
+      <li><b>TYPE형 포인터를 대상으로 n의 크기만큼 값을 증가 및 감소 시, n * sizeof(TYPE)의 크기마늠 주소 값이 증가 및 감소한다.</b></li>
       <li>만약 포인터, 예를 들어 'zippo + 1'이라면 <b>'zippo의 주소 + (sizeof(*zippo)*1)bytes'</b>만큼 이동함을 의미한다.</li>
       <li>이는 즉, <b>'zippo의 주소 + (sizeof(*int(*)[2])*1)bytes' = zippo의 주소 + 8bytes</b>만큼 이동한다는 뜻이다.</li>
 </ol>
