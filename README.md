@@ -86,7 +86,6 @@ so declaring parameter as int* array and int array[] are equivalent.
       <b>C에서 배열 표기법이 함수 매개변수에 사용되면</b><br>
       포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int[]로 선언하는 것은 동등하다.
 </p>
-<br>
 <p>
       
       When passing an array as a parameter, this 
@@ -112,6 +111,45 @@ so declaring parameter as int* array and int array[] are equivalent.
 <p>
       <b>따라서 요약하면, C 프로그램의 배열 이름은 (대부분의 경우) 포인터로 변환된다. 한 가지 예외는 어레이에서 연산자 크기를 사용하는 것이다. 이 맥락에서 a가 포인터로 변환된 경우 a의 크기는 실제 배열이 아닌 포인터 크기를 제공하므로 오히려 쓸모가 없으므로 a는 배열 자체를 의미한다.</b>
 </p>
+<br>
+
+<p>
+      An array object name, or more generally any array expression, is implicitly <b>“converted”</b> to a pointer whenever it’s used in an expression — unless it is either
+<ul>
+      <li>The operand of the unary sizeof operator; or</li>
+      <li>The operand of the unary & (address-of) operator; or</li>
+      <li>A string literal in an initializer used to initialize an array object (possibly a sub-object of something else).</li>
+</ul>
+
+> This isn’t a run-time conversion; it’s more of a compile time adjustment.) The resulting pointer value is the address of the initial (0th) element of the array object.
+</p>
+</p>
+<p>
+      
+      이것은 런타임 변환이 아니라 컴파일 타입의 조정에 가깝다. 포인터 값은 배열 요소의 1번째 요소의 주소(== &arr[0])입니다.
+
+</p>
+<br>
+<hr>
+<h3>참조 - K. N. KING - C PROGRAMMING A Modern Approach (p.266, p.272)
+<hr>
+<p>
+      An array object name, or more generally any array expression, is implicitly <b>“converted”</b> to a pointer whenever it’s used in an expression — unless it is either
+<ul>
+      <li>The operand of the unary sizeof operator; or</li>
+      <li>The operand of the unary & (address-of) operator; or</li>
+      <li>A string literal in an initializer used to initialize an array object (possibly a sub-object of something else).</li>
+</ul>
+
+> This isn’t a run-time conversion; it’s more of a compile time adjustment.) The resulting pointer value is the address of the initial (0th) element of the array object.
+</p>
+</p>
+<p>
+      
+      이것은 런타임 변환이 아니라 컴파일 타입의 조정에 가깝다. 포인터 값은 배열 요소의 1번째 요소의 주소(== &arr[0])입니다.
+
+</p>
+<br>
 <hr>
 <h3>참조</h3>
 <hr>
@@ -120,6 +158,8 @@ so declaring parameter as int* array and int array[] are equivalent.
 <li><a href = "https://stackoverflow.com/questions/27878583/does-int-decay-into-int-in-a-function-parameter#comment44159110_27878630">Does “int (*)[]” decay into “int **” in a function parameter?</a></li>
 <li><a href = "https://stackoverflow.com/questions/1641957/is-an-array-name-a-pointer">Is an array name a pointer?</a></li>
 <li><a href = "http://www.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS9919998334">포인터와 배열의 애증 관계</a></li>
+<li><a href = "https://www.quora.com/Do-C-compilers-gcc-implicitly-convert-arrays-to-pointer">Do C compilers (gcc) implicitly convert arrays to pointer?</a></li>
+<li><a href = "https://yeogue.tistory.com/m/24">[정보/프로그래밍 갤러리]아까 나왔던 배열 얘기 설명해준다 - KaBiS</a></li>
 </ul>
 <hr>
 <h3>정리</h3>
@@ -201,6 +241,10 @@ gcc 4.x에서는 gcc -std=c99 -ansi -Wall로 컴파일하고, gcc 3.x에서는 g
 <h4>"배열과 포인터"</h4>
 <hr>
 <ol>
+      <li>배열 이름과 포인터는 다르다. 다만 배열 이름이 몇몇 상황에서 포인터로 암시적인 형 변환(implicit type conversion)을 겪을 뿐이다.
+            이러한 변환을 <b>붕괴(decay)</b>라고 한다.</li>
+      <li>배열 이름 자체에 <b>sizeof연산자를 사용</b>하거나 , <b>배열 이름 앞에 & 연산자를 붙여 주소를 취할 때</b>는 붕괴(decay)가 일어나지 않는다.
+            &nbsp;<b>웬만한 경우에는 붕괴가 일어난다.</b></li>
       <li><b>C에서 int[]은 함수 매개변수에서 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int[]로 선언하는 것은 동등하다.</b></li>
       <li>배열명은 배열 생성부터 상수값으로 고정된다.</li>
       <li>배열명이 배열의 시작주소값을 상수 값으로 갖고 변경할 수 없다. 단, 그 배열의 주소에 들어있는 값을 변경하는 것은 가능하다.</li>
