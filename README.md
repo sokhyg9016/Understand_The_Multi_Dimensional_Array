@@ -88,6 +88,24 @@ so declaring parameter as int* array and int array[] are equivalent.
 </p>
 <br>
 <p>
+      
+      When passing an array as a parameter, this 
+      
+      void arraytest(int a[]) 
+      {
+            ... 
+      }
+      
+      means exactly the same as 
+      
+      void arraytest(int *a)
+      {
+            ...
+      }
+      
+</p>
+<br>
+<p>
 "..So, in summary, array names in a C program are (in most cases) converted to pointers. One exception is when we use the sizeof operator on an array. If a was converted to a pointer in this context, sizeof a would give the size of a pointer and not of the actual array, which would be rather useless, so in that case a means the array itself."
 </p>
 </p>
