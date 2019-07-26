@@ -186,6 +186,20 @@ gcc 4.x에서는 gcc -std=c99 -ansi -Wall로 컴파일하고, gcc 3.x에서는 g
 <p>출처: <a href = "http://www.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS9919998334">http://www.hanbit.co.kr/channel/category/category_view.html?cms_code=CMS9919998334</a>
 </p>
 <hr>
+<h4>"포인터 연산"</h4>
+<hr>
+<ol>
+      <li><b>'주소 + 정수'</b>연산에서 정수는 해당 주소의 타입에 영향을 받아 상대적인 메모리상의 거리를 의미한다.</li>
+      <li>int형 포인터를 대상으로 n 증가 -> n * sizeof(int)의 크기 만큼 증가</li>
+      <li>double 형 포인터를 대상으로 n 증가 -> n * sizeof(double)의 크기 만큼 증가</li>
+      <li><b>TYPE형 포인터를 대상으로 n의 크기만큼 값을 증가 및 감소 시, n * sizeof(TYPE)의 크기마늠 주소 값이 증가 및 감소한다.<b></li>
+      <li>만약 포인터, 예를 들어 'zippo + 1'이라면 <b>'zippo의 주소 + (sizeof(*zippo)*1)bytes'</b>만큼 이동함을 의미한다.</li>
+      <li>이는 즉, <b>'zippo의 주소 + (sizeof(*int(*)[2])*1)bytes' = zippo의 주소 + 8bytes</b>만큼 이동한다는 뜻이다.</li>
+</ol>
+<br>
+<hr>
+<h4>"배열과 포인터"</h4>
+<hr>
 <ol>
       <li><b>C에서 int[]은 함수 매개변수에서 사용되면 포인터 선언으로 자동 변환되므로 매개변수를 int* 배열과 int[]로 선언하는 것은 동등하다.</b></li>
       <li>배열명은 배열 생성부터 상수값으로 고정된다.</li>
@@ -195,9 +209,6 @@ gcc 4.x에서는 gcc -std=c99 -ansi -Wall로 컴파일하고, gcc 3.x에서는 g
       <li>즉 int (*a)[]는 int arr[5]; 에서 arr의 주소를, int** a는 int*p에서 p의 주소를 저장한다.</li>
       <li>이때 당연히 arr와 p의 데이터 타입은 다르다. <b>&arr는 int(*)[5], &p는 int**이다.</b></li>
       <li>int zippo[4][2]에서 <b>zippo</b>는 type이 int[4][2]이며 이는 암시적으로 <b>'int(*)[2]'</b>로 변경될 수 있다.</li>
-      <li><b>'주소 + 정수'</b>연산에서 정수는 해당 주소의 타입에 영향을 받아 상대적인 메모리상의 거리를 의미한다.</li>
-      <li>만약 포인터, 예를 들어 'zippo + 1'이라면 <b>'zippo의 주소 + (sizeof(*zippo)*1)bytes'</b>만큼 이동함을 의미한다.</li>
-      <li>이는 즉, <b>'zippo의 주소 + (sizeof(*int(*)[2])*1)bytes' = zippo의 주소 + 8bytes</b>만큼 이동한다는 뜻이다.</li>
       <li>int(*)[2] = zippo를 가리킬수 있고, 이때 이 배열 포인터를 한번 역참조하면 int[2]의 첫번째 주소 값으로 이동할 수 있다.</li> 
       <li>int(*)[2]의 주소 값의 타입은 <b>int(**)[2]</b>가 된다. (Ex. int(**zippo_ptr_ptr)[2] = &zippo_ptr;)</li>
 </ol>
