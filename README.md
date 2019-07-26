@@ -134,20 +134,44 @@ so declaring parameter as int* array and int array[] are equivalent.
 <h3>참조 - K. N. KING - C PROGRAMMING A Modern Approach (p.266, p.272)
 <hr>
 <p>
-      An array object name, or more generally any array expression, is implicitly <b>“converted”</b> to a pointer whenever it’s used in an expression — unless it is either
-<ul>
-      <li>The operand of the unary sizeof operator; or</li>
-      <li>The operand of the unary & (address-of) operator; or</li>
-      <li>A string literal in an initializer used to initialize an array object (possibly a sub-object of something else).</li>
-</ul>
-
-> This isn’t a run-time conversion; it’s more of a compile time adjustment.) The resulting pointer value is the address of the initial (0th) element of the array object.
-</p>
+<h4>P. 266</h4>
+"Although declaring a parameter to be an array is the same as declaring it to be a pointer, the same isn't true for a variable."
+<pre>
+- 매개변수를 배열로 선언하는 것은 포인터로 선언하는 것과 같지만 변수에 대해서는 동일하지 않다.
+</pre>
 </p>
 <p>
-      
-      이것은 런타임 변환이 아니라 컴파일 타입의 조정에 가깝다. 포인터 값은 배열 요소의 1번째 요소의 주소(== &arr[0])입니다.
+<h4>P. 272[2/1]</h4>
+<p>
+<b>Q:&nbsp;&nbsp;Why is *a the same a[] in a parameter declaration?</b><br><br>
+A:&nbsp;&nbsp;"Both indicate that the argument is expected to be a pointer. The same operations on "a" are possible in both cases(pointer arithmetic and array subscripting, in particu-lar). And, in both cases, "a" itself can be assigned a new value within the function. (Although C allows us to use the name of an array variable only as a <b>"constant pointer"</b>, there's no such restriction on the name of an array parameter.)"
+</p>
+<pre>
+- Q: 매개 변수 선언에서 *a가  a[]와 같은 이유는 무엇입니까?
+- A: "둘 다 인수가 포인터가 될 것으로 예상됨을 나타냅니다. "a"에 대한 동일한 연산은 두 경우 모두 가능합니다.
+     [특히 포인터 연산 및 배열 첨자 지정의 경우]
+     그리고, 두 경우 모두, "a" 자체는 함수 내에서 새로운 값을 할당할 수 있습니다."
+     
+     [C는 배열 변수의 이름을 "상수 포인터"로만 사용할 수 있도록 허용하지만, 
+     배열 파라미터의 이름에 대해서는 그러한 제한이 없습니다.]
+</pre>
+</p>
 
+<p>
+<h4>P. 272[2/2]</h4>
+<p>
+<b>Q:&nbsp;&nbsp;We've seen that arrays and pointers are closely related in C. Would it be accurate to say that they're interchangeable?</b><br><br>
+A:&nbsp;&nbsp;"No, It's true that array parameters are interchangeable with pointer parameters, but array variables aren't the same as pointer variables. <b>Technically, the name of an array isn't a pointer; rather, the C compiler convert it to a pointer when necessary.</b>To see this difference more clearly, consider what happens when we apply the "sizeof" operator to an array 'a'. The value of 'sizeof(a)' is the total number of bytes in the arrray -- the size of each element multiplied by the number of elements. But if 'p' is a pointer variable, 'sizeof(p)' is the number of bytes required to store a pointer value."
+</p>
+<pre>
+- Q: 우리는 배열과 포인터가 C와 밀접하게 관련되어 있다는 것을 보았습니다.
+  이 서로 바꿀 수 있다고(바꾸어 사용할 수 있다고)말하는 것이 정확한 것인가요?
+- A: "아니요, 배열 파라미터가 포인터 파라미터와 호환되는 것은 사실이지만 배열 변수는 포인터 변수와 같지 않습니다. 
+  기술적으로 배열의 이름은 포인터가 아니며, C 컴파일러는 필요할 때만 포인터로 변환합니다. 이 차이를 좀 더 명확히 보려면 
+  "sizeof" 연산자를 배열 'a"에 적용하면 어떻게 되는지 고려해 보십시오. 
+  "sizeof(a)"의 값은 각 요소의 크기에 요소 수를 곱한 배열의 총 바이트 수입니다. 
+  그러나 'p'가 포인터 변수인 경우 'sizeof(p)'는 포인터 값을 저장하는 데 필요한 바이트 수입니다."
+</pre>
 </p>
 <br>
 <hr>
