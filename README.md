@@ -9,25 +9,29 @@ When an array expression appears in most contexts, its type is implicitly conver
 Thus, the expression zippo "decays" from type int [4][2] (4-element array of 2-element arrays of int) to int (*)[2] (pointer to 2-element array of int). Similarly, the type of zippo[0] is int [2], which is implicitly converted to int *.
 </p>
 
-<pre>
 Given the declaration int zippo[4][2], the following table shows the types of various array expressions involving zippo and any implicit conversions:
 
-Expression    Type            Implicitly converted to  Equivalent expression
-----------    ----            -----------------------  ---------------------
-zippo         int [4][2]      int (*)[2]               
-&zippo        int (*)[4][2]       
-*zippo        int [2]         int *                    zippo[0]
-zippo[i]      int [2]         int *
-&zippo[i]     int (*)[2]                               
-*zippo[i]     int                                      zippo[i][0]
-zippo[i][j]   int
-&zippo[i][j]  int *
-*zippo[i][j]  invalid
-</pre>
+
+|Expression|Type|Implicitly converted to|  Equivalent expression|
+|:-------|:-------|:------|:------|
+|zippo    |int [4][2]|int (*)[2]|               
+|&zippo   |int (*)[4][2]|       
+|*zippo   |int [2]|int *|zippo[0]|
+|zippo[i] |     int [2]|         int *|
+|&zippo[i] |    int (*)[2]   |                            
+|*zippo[i]  |   int  |                                    |zippo[i][0]|
+|zippo[i][j] |  int|
+|&zippo[i][j] | int *|
+|*zippo[i][j]|  invalid|
+
+
 <hr>
-<p>
-Note that zippo, &zippo, *zippo, zippo[0], &zippo[0], and &zippo[0][0] all have the same value; they all point to the base of the array (the address of the array is the same as the address of the first element of the array). The types of the various expressions all differ, though.
-</p>
+Note that zippo, &zippo, *zippo, zippo[0], &zippo[0], and &zippo[0][0] all have the same value; they all point to the base of the array (the address of the array is the same as the address of the first element of the array). 
+<br>
+
+**`The types of the various expressions all differ, though.`**
+
+<br>
 
 <h3>Result</h3>
 <hr>
@@ -111,6 +115,45 @@ so declaring parameter as int* array and int array[] are equivalent.
 <p>
       <b>따라서 요약하면, C 프로그램의 배열 이름은 (대부분의 경우) 포인터로 변환된다. 한 가지 예외는 어레이에서 연산자 크기를 사용하는 것이다. 이 맥락에서 a가 포인터로 변환된 경우 a의 크기는 실제 배열이 아닌 포인터 크기를 제공하므로 오히려 쓸모가 없으므로 a는 배열 자체를 의미한다.</b>
 </p>
+
+> 이때 주의할 점은 C에서 배열의 이름은 표현식 내에서 많은 경우, 배열의 첫 번째 요소의 위치를 가리키는 포인터로 변환되지만,
+  그렇다고 절대, 절대, 절대로 배열이 포인터는 아니라는 점이다. 즉, 배열이 선언되자마자 바로 포인터로 변환되거나 변환된 내용이 영구히 지속된다고 생각하면 안된다. 배열 식별자(배열이름)은 배열을 식별해주는 역할을 한다. 앞에서 말한 근거는 만약 우리가 `sizeof()`연산을 쓰게 된다면 우리는 포인터의 크기가 아닌 배열의 크기를 반환해 주기 때문이다.
+
+> 정리하자면, 배열의 이름은 배열을 지정(또는 식별)하는 식별자이며, 흔히 `non-modifiable l-value`라고 한다.
+> `array decay`가 발생하는 경우에 배열의 이름은 표현식 내에서 배열의 첫번째 요소의 주소를 가리키는 포인터로 반환되며, 이때 몇 가지 예외가 존재한다.
+
+배열의 이름이 `non-modifiable l-value`라고 말하는 이유는 `l-value`란 C11 Standard에 나와 있는 내용을 근거로 하자면,
+
+> **6.3.2.1 Lvalues, arrays, and function designators**<br>
+참고: [C11 Standard](http://www.open-std.org/jtc1/sc22/wg14/www/docs/n1548.pdf)
+
+> 1 An *__lvalue__* is an expression (with an object type other than void) that potentially designates an object;64) if an lvalue does not designate an object when it is evaluated, the behavior is undeﬁned. When an object is said to have a particular type, the type is speciﬁed by the lvalue used to designate the object. A *__modiﬁable lvalue__* is an `lvalue` that does not have array type, does not have an incomplete type, does not have a const-qualified type, and if it is a structure or union, does not have any member (including, recursively, any member or element of all contained aggregates or unions) with a const-qualiﬁed type. 
+
+<p>
+
+      l-value는 잠재적으로 객체를 지정하는 표현식입니다. 
+      만약 평가되어질 때에 객체를 지정하고 있지 않은 l-value라면 그 행동은 정의되지 않습니다.
+      객체가 특정한 타입을 가질 때, 그 타입은 l-value에 의해 그 객체를 지정하도록 명시되어 진다.
+      
+      수정할 수 있는 l-value는
+      
+      1. 배열타입을 갖지 않고, 
+      2. 불완전한 형식을 갖지 않고, 
+      (불완전한 형식은 식별자를 설명하지만 식별자 크기를 확인하는 데 필요한 정보는 
+       포함하지 않는 형식입니다. 불완전한 형식은 void, char str[], 맴버를 지정하지 않은 구조체 형식 등이 있다.) 
+      3. const가 붙은 타입(= const-qualified type)이 아니거나,
+      4. 만약 구조체나 공용체(union)일때, const가 붙은 타입의 맴버를 갖지 않는
+      
+      l-value를 말한다.
+
+</p>
+
+즉 `lvalue`란 객체(object, 여기서는 변수등을 말함)를 지정하는 표현식으로서, 당연히 배열의 이름 또한 배열을 가리키는, 즉 지정하는 표현식
+이므로 l-value라고 말할 수 있다.
+
+> 하지만 C11 표준에도 나와있듯이 배열 타입은 수정할 수 있는 l-value가 아니기 때문에 배열의 식별자인 배열의 이름은 `변경할 수 없는 lvalue`라고 할 수
+있다.
+
 <br>
 
 <p>
